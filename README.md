@@ -39,3 +39,13 @@ Design and implement an employee management system using abstract classes and me
 - Add a method to the `EmployeeManager` class to calculate the total payroll of all employees and print the result.
 
 ## Sample Output for Main Method
+```java
+Employee: John Smith, ID: 101, Department: Finance
+Paycheck: $2300.0
+
+Employee: Jane Doe, ID: 102, Department: IT
+Paycheck: $960.0
+
+Employee: Bob Johnson, ID: 103, Department: Marketing
+Paycheck: $4500.0
+```
