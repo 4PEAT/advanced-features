@@ -1,50 +1,43 @@
-
----
-
-# Enhanced Payment Processing System
+# Payment Processing System Task
 
 ## Objective
-Expand the `PaymentProcessor` interface in Java to include additional functionality and state management. Implement `CreditCardProcessor` and `PayPalProcessor` classes, each maintaining its own state and handling payments accordingly.
+Develop a Java-based payment processing system with a focus on implementing detailed behaviors in the `processPayment` method for different payment processors.
 
-## Task Description
+## Detailed Task Instructions
 
-### 1. Interface Definition - `PaymentProcessor`
-Implement the `PaymentProcessor` interface with the following specifications:
+### 1. PaymentProcessor Interface
+- Implement the `PaymentProcessor` interface with the following methods:
+  - **Abstract Method**: `boolean processPayment(double amount)`
+  - **Static Method**: `static double convertCurrency(double amount, double exchangeRate)`
+  - **Default Method**: `default void logTransaction(String transactionDetails)`
 
-- **Abstract Method**:
-  - `boolean processPayment(double amount)`: Process a payment of the specified amount. Return `true` if successful, and `false` if it fails.
-- **Static Method**:
-  - `static double convertCurrency(double amount, double exchangeRate)`: Convert the specified amount to another currency using the given exchange rate. Return the converted amount.
-- **Default Method**:
-  - `default void logTransaction(String transactionDetails)`: Log the transaction details with a timestamp.
+### 2. CreditCardProcessor Class
+- Implement the `CreditCardProcessor` class with specific behaviors in `processPayment`:
+  - Check if the transaction amount exceeds a predefined limit (e.g., $5000). If it does, the payment should fail.
+  - Calculate a transaction fee based on a percentage of the amount (e.g., 2% of the transaction amount) and include this in the payment processing.
+  - Log a successful or failed transaction message using the `logTransaction` method.
 
-### 2. Implementation Classes with Variables
+### 3. PayPalProcessor Class
+- Implement the `PayPalProcessor` class with specific behaviors in `processPayment`:
+  - Validate the email address associated with the PayPal account (e.g., check if it contains a domain name).
+  - If `internationalPaymentsEnabled` is `true`, process international payments by applying an additional fee or exchange rate. Otherwise, limit transactions to domestic payments.
+  - Log a successful or failed transaction message using the `logTransaction` method.
 
-- **`CreditCardProcessor` Class**:
-  - Variables: `String cardType`, `double transactionFee`.
-  - The `processPayment` method should consider the `transactionFee` for each transaction.
-- **`PayPalProcessor` Class**:
-  - Variables: `String accountEmail`, `boolean internationalPaymentsEnabled`.
-  - The `processPayment` method should handle international payments based on the `internationalPaymentsEnabled` flag.
-
-### 3. Main Class
-Create a `Main` class to:
-  - Instantiate and configure `CreditCardProcessor` and `PayPalProcessor`.
-  - Process payments using both processors.
-  - Utilize `convertCurrency` for currency conversions.
-  - Log transactions using the `logTransaction` method.
+### 4. Main Class
+- Demonstrate the functionality in a `Main` class:
+  - Create instances of both `CreditCardProcessor` and `PayPalProcessor`.
+  - Process payments with various scenarios (e.g., exceeding limits, international payments).
+  - Utilize the `convertCurrency` method for international transactions.
 
 ## Additional Challenges
-- Implement validations in the `processPayment` methods based on the state variables.
-- Format the timestamp in the `logTransaction` method into a human-readable date and time.
+- Implement error handling for invalid inputs or payment processing failures.
+- Enhance the `logTransaction` method to include detailed transaction information and readable timestamps.
 
 ## Requirements
-- Implement state management in the `CreditCardProcessor` and `PayPalProcessor` classes.
-- Showcase the use of abstract, static, and default methods in the interface.
-- Handle various payment scenarios, reflecting the state of each processor.
+- Accurately implement the specified behaviors in the `processPayment` method for each class.
+- Demonstrate the use of abstract, static, and default methods in the interface.
+- Ensure proper handling of different payment processing scenarios.
 
 ## Expected Outcome
-- A system where each processor has its configuration and state, influencing payment processing.
-- Demonstrated ability to manage state within classes implementing an interface.
-- Understanding of combining static and instance-specific behaviors.
-
+- A robust payment processing system capable of handling various scenarios and providing detailed transaction logs.
+- Clear demonstration of object-oriented principles and Java interface implementation.
