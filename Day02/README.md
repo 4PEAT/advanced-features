@@ -1,4 +1,3 @@
-Sure! Here's how you can format the task as a README file for a GitHub repository. This format is commonly used for outlining project specifications and instructions in a clear and structured manner:
 
 ---
 
