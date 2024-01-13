@@ -1,7 +1,8 @@
+
 # Payment Processing System Task
 
 ## Objective
-Develop a Java-based payment processing system with a focus on implementing detailed behaviors in the `processPayment` method for different payment processors.
+Develop a Java-based payment processing system with specific behaviors in the `processPayment` method for different payment processors.
 
 ## Detailed Task Instructions
 
@@ -13,21 +14,22 @@ Develop a Java-based payment processing system with a focus on implementing deta
 
 ### 2. CreditCardProcessor Class
 - Implement the `CreditCardProcessor` class with specific behaviors in `processPayment`:
-  - Check if the transaction amount exceeds a predefined limit (e.g., $5000). If it does, the payment should fail.
-  - Calculate a transaction fee based on a percentage of the amount (e.g., 2% of the transaction amount) and include this in the payment processing.
-  - Log a successful or failed transaction message using the `logTransaction` method.
+  - Calculate a transaction fee based on a percentage of the amount (e.g., 2%).
+  - Check if the sum of the transaction amount and transaction fee exceeds a predefined limit (e.g., $5000). If it does, the payment should fail.
+  - Log a successful or failed transaction message using the `logTransaction` method, including details about the transaction amount and fee.
 
 ### 3. PayPalProcessor Class
 - Implement the `PayPalProcessor` class with specific behaviors in `processPayment`:
-  - Validate the email address associated with the PayPal account (e.g., check if it contains a domain name).
-  - If `internationalPaymentsEnabled` is `true`, process international payments by applying an additional fee or exchange rate. Otherwise, limit transactions to domestic payments.
-  - Log a successful or failed transaction message using the `logTransaction` method.
+  - Validate the email address associated with the PayPal account.
+  - Apply a flat transaction fee (e.g., $2.00) for all PayPal transactions.
+  - Log a successful or failed transaction message using the `logTransaction` method, including details about the transaction and the applied fee.
 
 ### 4. Main Class
 - Demonstrate the functionality in a `Main` class:
   - Create instances of both `CreditCardProcessor` and `PayPalProcessor`.
-  - Process payments with various scenarios (e.g., exceeding limits, international payments).
+  - Process payments with various scenarios (e.g., exceeding limits, applying fees).
   - Utilize the `convertCurrency` method for international transactions.
+  - Log all transactions.
 
 ## Additional Challenges
 - Implement error handling for invalid inputs or payment processing failures.
@@ -39,5 +41,5 @@ Develop a Java-based payment processing system with a focus on implementing deta
 - Ensure proper handling of different payment processing scenarios.
 
 ## Expected Outcome
-- A robust payment processing system capable of handling various scenarios and providing detailed transaction logs.
+- A robust payment processing system capable of handling various scenarios, including transaction fees and limits.
 - Clear demonstration of object-oriented principles and Java interface implementation.
