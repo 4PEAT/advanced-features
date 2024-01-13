@@ -48,6 +48,3 @@ Create a `Main` class to:
 - Demonstrated ability to manage state within classes implementing an interface.
 - Understanding of combining static and instance-specific behaviors.
 
----
-
-This README format provides a clear overview of the project, making it easier for contributors or evaluators to understand the objectives, tasks, and requirements. You can add this to your GitHub repository to guide those who are looking to understand or contribute to your project.
