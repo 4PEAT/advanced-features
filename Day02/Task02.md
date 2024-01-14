@@ -33,10 +33,6 @@ Design and implement a console-based role-playing game in Java, demonstrating th
    - Simulate a battle to showcase special moves, item usage, and the battle process.
    - Clearly demonstrate encapsulation by interacting with objects through their methods, inheritance and polymorphism through the special moves of character subclasses, and abstraction by using the `Battle` interface.
 
-#### Deliverables
-- Full Java source code with comments explaining the implementation and OOP concepts.
-- A README file describing game mechanics, instructions for running the game, and an overview of OOP concepts applied.
-
 #### Bonus Challenges (Optional)
 - Implement advanced battle mechanics (e.g., defense, speed, special conditions).
 - Create an inventory system for characters.
