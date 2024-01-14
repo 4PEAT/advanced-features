@@ -1,40 +1,40 @@
-### Task: Develop a Java OOP Game System
+### Task: Develop a Java OOP Role-Playing Game
 
-#### Overview
-You are tasked with creating a console-based role-playing game (RPG) in Java. This game should showcase the fundamental principles of OOP: Encapsulation, Inheritance, Polymorphism, and Abstraction.
+#### Objective
+Design and implement a console-based role-playing game in Java to illustrate the core concepts of Object-Oriented Programming: Encapsulation, Inheritance, Polymorphism, and Abstraction.
 
-#### Task Details
+#### Task Breakdown
 
 **1. Encapsulation: Character and Item Management**
-   - **Character Class**: Create a `Character` class with private attributes (e.g., `name`, `health`, `strength`). Implement public methods for data access and manipulation.
-   - **Item Class**: Create an `Item` class to represent various items in the game. Each item should have attributes like `name`, `type`, and `effect` encapsulated within it.
+   - **Character Class**: Develop a `Character` class with private attributes like `name`, `health`, `strength`. Include public methods for data access and manipulation.
+   - **Item Class**: Create an `Item` class for game items. Each item should have private attributes `name`, `type`, `effect`, and a method to apply its effect to a character.
 
 **2. Inheritance: Character Specialization**
-   - Develop subclasses (e.g., `Warrior`, `Mage`, `Archer`) that inherit from `Character`. Each subclass should have unique properties and behaviors.
-   - Implement a method in each subclass that reflects its unique skill or ability.
+   - Develop subclasses of `Character` (e.g., `Warrior`, `Mage`, `Archer`) with unique properties and behaviors.
+   - Implement at least one unique method in each subclass that reflects its specialization.
 
 **3. Polymorphism: Special Abilities**
-   - Introduce a polymorphic method `performSpecialMove()` in the `Character` class. This method will be overridden in each subclass to perform a character-specific special move.
+   - Implement a polymorphic method `performSpecialMove()` in the `Character` class.
+   - Override this method in each subclass for a character-specific special move.
 
-**4. Abstraction: Battle Mechanics**
-   - Design an interface `Battle` with methods like `startFight(Character, Character)`, `attack(Character, Character)`, and `defend(Character)`.
-   - Implement this interface in a `SimpleBattle` class that outlines the basic battle mechanics between characters.
+**4. Abstraction: Battle Interface**
+   - Design a `Battle` interface with methods like `startFight(Character, Character)`.
+   - Implement the interface in a `SimpleBattle` class to define the basic rules of engagement between characters.
 
 **5. Game Flow Implementation**
-   - Create a `Game` class to handle the overall game mechanics. This includes character creation, item management, and initiating battles.
+   - Create a `Game` class to manage the game. It should handle character creation, item management, and initiating battles.
 
 **6. Demonstration and Testing**
-   - In the `main` method of the `Game` class, demonstrate the creation of different characters and items.
-   - Simulate a battle scenario to showcase how different characters use their special abilities.
-   - Highlight the use of OOP concepts: Create characters (encapsulation), use subclass specific methods (inheritance and polymorphism), and initiate a battle (abstraction).
+   - In the `main` method of `Game`, demonstrate character creation, item usage, and a battle simulation.
+   - Showcase encapsulation by interacting with character and item properties through their methods.
+   - Demonstrate inheritance and polymorphism through subclass-specific methods and special moves.
+   - Use the `Battle` interface to initiate a battle, illustrating abstraction.
 
 #### Deliverables
-- Source Code: Complete Java source code with comments explaining the OOP concepts.
-- Documentation: A README file describing the game mechanics, how to run the game, and an overview of the OOP concepts implemented.
+- Complete Java source code with comments explaining the implementation of OOP concepts.
+- A README file providing an overview of the game mechanics, how to run the game, and an explanation of the OOP concepts used.
 
-#### Bonus Challenges
-- Add an inventory system for characters to hold multiple items.
-- Implement more complex battle mechanics considering attributes like defense, speed, and item effects.
-- Introduce a simple storyline where characters can engage in multiple battles and quests.
-
-This task is designed to provide a comprehensive understanding of OOP principles through a practical, engaging project. It allows for creativity in expanding game features while focusing on solidifying your understanding of Java OOP concepts.
+#### Advanced Challenges (Optional)
+- Enhance the battle system with additional features like defense, speed, and more complex item effects.
+- Implement an inventory system where characters can carry multiple items.
+- Create a simple storyline where characters go through multiple levels or quests.
