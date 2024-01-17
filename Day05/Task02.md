@@ -41,5 +41,3 @@ public class SupportTicketSystem {
     }
 }
 ```
-
-This program demonstrates a simple use of a queue in a real-world scenario. You can expand this basic framework with additional features like prioritizing certain tickets, handling concurrency in a multi-threaded environment, or integrating it with a database or a front-end interface.
