@@ -1,5 +1,3 @@
-Sure, here's a practical task scenario for using a queue in Java, including a task description and the necessary code to implement it.
-
 ### Scenario
 Imagine you're developing a system for a customer support center. This center receives support tickets which are added to a queue. Each ticket is processed in the order it was received. Your task is to create a system that manages this queue of tickets.
 
