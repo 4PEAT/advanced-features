@@ -60,6 +60,7 @@
    - C) In high-performance critical applications
    - D) To create plug-in architectures
 
+
 **10. What is the potential downside of using Reflection in Java?**
     - A) It makes the code more readable and maintainable
     - B) It can lead to performance overhead
