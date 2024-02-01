@@ -136,4 +136,3 @@
    - C) `HashSet` offers constant time performance for basic operations, while `TreeSet` does not.
    - D) Both `HashSet` and `TreeSet` are synchronized.
 
-These questions cover a range of topics from encapsulation and inheritance to more complex areas like generics and the collections framework, providing a thorough test of a student's understanding of Java OOP concepts.
