@@ -55,7 +55,6 @@
    - C) `LinkedList` provides faster random access of elements than `ArrayList`.
    - D) `LinkedList` consumes less memory than `ArrayList` for large lists.
 
-These questions test a range of advanced Java OOP concepts. To create a complete set of 50 questions, continue in a similar vein, ensuring a variety of topics and difficulty levels.
 #### 6. Inner Classes
 **Question:** What is a characteristic of a static inner class in Java?
    - A) It can access non-static members of the outer class.
