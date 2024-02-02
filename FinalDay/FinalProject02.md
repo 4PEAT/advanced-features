@@ -19,7 +19,7 @@
 4. **Utility Services:**
    - Employ enumerations, such as `RoomStatus`, to represent the status of rooms (e.g., AVAILABLE, OCCUPIED, UNDER_MAINTENANCE).
    - Use inner classes within the hotel management classes for functionalities like booking management, which is specific to the hotel's operational context.
-   - Implement anonymous classes for short-lived operations or tasks, like sorting a list of available rooms based on different criteria. https://stackoverflow.com/questions/16425127/how-to-use-collections-sort-in-java
+   - Implement anonymous classes for short-lived operations or tasks, like sorting a list of available rooms based on different criteria. [How to use sorting?](https://stackoverflow.com/questions/16425127/how-to-use-collections-sort-in-java)
 
 5. **System Operations:**
    - Annotate critical methods to indicate specific actions or checks, using custom annotations where applicable, to simplify maintenance and readability.
