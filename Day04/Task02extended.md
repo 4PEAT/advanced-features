@@ -7,6 +7,30 @@ Improve the flexibility of the configuration loader by expanding the range of da
 **Detailed Actions:**
 1. **Extend Basic Data Type Support**:
    - **Double, Long, Float**: Enhance the `convertValue` method to include conversions from `String` to `double`, `long`, and `float`. Each conversion should handle any potential `NumberFormatException` to ensure the loader remains robust and error-tolerant.
+AppConfig class can look like this
+```java
+public class AppConfig {
+    private String databaseUrl;
+    private int maxConnections;
+    private String apiToken;
+    private boolean featureEnabled;
+    
+    // New fields for additional data types
+    private double performanceScore;   // to store values like system performance scores
+    private long dataRetentionDays;    // to store values in days for data retention policies
+    private float retryInterval;       // to store values like retry intervals in seconds
+
+    // Getters and setters for the new fields
+    public double getPerformanceScore() { return performanceScore; }
+    public void setPerformanceScore(double performanceScore) { this.performanceScore = performanceScore; }
+
+    public long getDataRetentionDays() { return dataRetentionDays; }
+    public void setDataRetentionDays(long dataRetentionDays) { this.dataRetentionDays = dataRetentionDays; }
+
+    public float getRetryInterval() { return retryInterval; }
+    public void setRetryInterval(float retryInterval) { this.retryInterval = retryInterval; }
+
+```
    - Implement error handling using try-catch blocks to catch conversion errors and provide meaningful error messages or default values in case of exceptions.
 
 2. **Add Support for Date Type**:
