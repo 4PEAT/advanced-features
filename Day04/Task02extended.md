@@ -20,16 +20,6 @@ public class AppConfig {
     private long dataRetentionDays;    // to store values in days for data retention policies
     private float retryInterval;       // to store values like retry intervals in seconds
 
-    // Getters and setters for the new fields
-    public double getPerformanceScore() { return performanceScore; }
-    public void setPerformanceScore(double performanceScore) { this.performanceScore = performanceScore; }
-
-    public long getDataRetentionDays() { return dataRetentionDays; }
-    public void setDataRetentionDays(long dataRetentionDays) { this.dataRetentionDays = dataRetentionDays; }
-
-    public float getRetryInterval() { return retryInterval; }
-    public void setRetryInterval(float retryInterval) { this.retryInterval = retryInterval; }
-
 ```
    - Implement error handling using try-catch blocks to catch conversion errors and provide meaningful error messages or default values in case of exceptions.
 
