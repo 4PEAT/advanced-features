@@ -81,33 +81,32 @@ Ensure the follower count is updated accurately when multiple users follow/unfol
 2. Simulate multiple threads performing follow/unfollow actions concurrently.
 3. Verify that the follower count is consistent and correct after all operations.
 
-### Example Code Snippets
 
-Here are some example code snippets to get you started with these exercises:
+### Task 1 example
 
-#### Logger Example
+1. **Create the `Logger` Class:**
+
 ```java
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-class Logger implements Runnable {
-    private List<String> logMessages;
+public class Logger implements Runnable {
+    private ConcurrentLinkedQueue<String> logMessages;
+    private volatile boolean running = true;
 
-    public Logger(List<String> logMessages) {
+    public Logger(ConcurrentLinkedQueue<String> logMessages) {
         this.logMessages = logMessages;
     }
 
     @Override
     public void run() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("log.txt", true))) {
-            while (true) {
-                synchronized (logMessages) {
-                    if (!logMessages.isEmpty()) {
-                        writer.println(logMessages.remove(0));
-                    }
+        try (PrintWriter writer = new PrintWriter(new FileWriter("activity_log.txt", true))) {
+            while (running || !logMessages.isEmpty()) {
+                String message = logMessages.poll();
+                if (message != null) {
+                    writer.println(message);
                 }
                 Thread.sleep(100); // Small delay to reduce busy-waiting
             }
@@ -115,58 +114,58 @@ class Logger implements Runnable {
             e.printStackTrace();
         }
     }
-}
 
-// In the main application
-List<String> logMessages = new ArrayList<>();
-Logger logger = new Logger(logMessages);
-Thread loggerThread = new Thread(logger);
-loggerThread.start();
-
-// Example of logging a user login
-synchronized (logMessages) {
-    logMessages.add("User bob logged in.");
+    public void shutdown() {
+        running = false;
+    }
 }
 ```
 
-#### Post Fetcher Example
+2. **Initialize Logger in Main Application:**
+
 ```java
-import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-class PostFetcher implements Runnable {
-    private String username;
-    private List<String> posts;
+public class MainApp {
+    private static ConcurrentLinkedQueue<String> logMessages = new ConcurrentLinkedQueue<>();
+    private static Logger logger = new Logger(logMessages);
+    private static Thread loggerThread = new Thread(logger);
 
-    public PostFetcher(String username, List<String> posts) {
-        this.username = username;
-        this.posts = posts;
-    }
+    public static void main(String[] args) {
+        loggerThread.start();
 
-    @Override
-    public void run() {
+        // Simulating user activities
+        logActivity("User bob logged in.");
+        logActivity("User alice created a new post.");
+        logActivity("User bob logged out.");
+
+        // Shutdown the logger thread before exiting
+        logger.shutdown();
         try {
-            Thread.sleep(2000); // Simulate delay
-            synchronized (posts) {
-                posts.add("Post 1 by " + username);
-                posts.add("Post 2 by " + username);
-            }
+            loggerThread.join();
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            e.printStackTrace();
         }
     }
-}
 
-// In the main application
-List<String> posts = new ArrayList<>();
-PostFetcher postFetcher = new PostFetcher("bob", posts);
-Thread postFetcherThread = new Thread(postFetcher);
-postFetcherThread.start();
-postFetcherThread.join(); // Wait for the fetcher to finish
-
-// Display fetched posts
-synchronized (posts) {
-    for (String post : posts) {
-        System.out.println(post);
+    public static void logActivity(String message) {
+        logMessages.add(message);
     }
 }
 ```
+
+3. **Logging User Activities:**
+- In the `logActivity` method, add messages to the `ConcurrentLinkedQueue`.
+- This method can be called throughout the application to log various activities such as user login, logout, and post creation.
+
+4. **Shutdown Logger Gracefully:**
+- The `Logger` class includes a `shutdown` method to set the `running` flag to false.
+- Before the main application exits, call `logger.shutdown()` and then join the logger thread to ensure it finishes processing any remaining log messages.
+
+### Summary
+
+By following these steps, you will:
+1. Create a `Logger` class that implements `Runnable` and processes log messages in a separate thread.
+2. Use `ConcurrentLinkedQueue` for thread-safe storage of log messages.
+3. Write log messages to a file in the `run` method.
+4. Integrate the logger with the main application to log user activities and shut down the logger gracefully.
