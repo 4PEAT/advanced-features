@@ -82,7 +82,7 @@ Ensure the follower count is updated accurately when multiple users follow/unfol
 3. Verify that the follower count is consistent and correct after all operations.
 
 
-### Task 1 example
+### Exercise 1 example
 
 1. **Create the `Logger` Class:**
 
