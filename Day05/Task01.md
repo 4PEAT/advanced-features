@@ -1,62 +1,126 @@
-### Task: Develop a Java Program for a Unique Item Tracker
 
-#### Objective:
-Create a Java application that tracks unique items in a collection, such as products, books, or any items identified by a unique identifier. The program will allow users to add items to the collection and ensure that no duplicates are added. It will also provide functionality to remove and search for items.
 
-#### Requirements:
+# 📋 Task: Develop a Java Program for a Unique Item Tracker
 
-1. **Setup:**
-   - Java Development Kit (JDK) and any IDE or text editor for writing Java code.
+## 🎯 Objective
+Create a **Java application** that manages a collection of unique items, each identified by a **unique ID** and associated with a **name**.  
+The system must allow users to:
+- **Add** items
+- **Remove** items
+- **Search** for items
+- **Display** all items
 
-2. **Item Class:**
-   - Define an `Item` class with necessary attributes like `id`, `name`, and any other relevant fields.
-   - Implement `equals` and `hashCode` methods in the `Item` class to ensure proper functionality when used in a `Set`.
+Duplicate entries (based on the unique ID) must be **prevented**.
 
-3. **Using Set for Unique Collection:**
-   - Use a `Set` (like `HashSet`) to store items. The `Set` ensures that all items in the collection are unique.
+---
 
-4. **Core Functionalities:**
-   - **Add Item**: Implement a method to add new items to the set. If an item with the same identifier already exists, it should not be added.
-   - **Remove Item**: Implement a method to remove an item by its identifier.
-   - **Search Item**: Implement a method to search for an item by its name or other attributes.
+## 🛠 Requirements
 
-5. **User Interface:**
-   - Use the console for user input and output.
-   - Implement a simple menu system with options to add, remove, and search for items.
+### Setup
+- Java Development Kit (JDK)
+- Any IDE (e.g., IntelliJ, Eclipse) or a simple text editor.
 
-6. **Testing:**
-   - Test your application with various scenarios to ensure it correctly handles adding, removing, and searching for items.
+---
 
-#### Example Code Structure:
+### 1. `Item` Class
+- Define a class `Item` with:
+  - `id` (String) — Unique identifier.
+  - `name` (String) — Item's name.
+- Implement:
+  - Constructor, getters, and setters.
+  - `equals()` and `hashCode()` based **only on `id`** to ensure items with the same ID are considered duplicates.
+  - `toString()` for clean item display.
 
-```java
-public class Item {
-    private String id;
-    private String name;
-    // Other attributes
+---
 
-    // Constructor, getters, setters, equals, hashCode
-}
+### 2. `ItemTracker` Class
+- Define a class `ItemTracker` that manages a collection of `Item` objects using a `Set<Item>` (preferably a `HashSet`).
+- Implement the following methods:
+  - `boolean addItem(Item item)`  
+    ➔ Adds an item if the ID is unique.
+  - `boolean removeItem(String id)`  
+    ➔ Removes an item by ID using `removeIf`.
+  - `boolean removeItemIterator(String id)`  
+    ➔ Alternative method: removes by iterating manually using an `Iterator`.
+  - `Set<Item> searchItemByName(String name)`  
+    ➔ Searches items case-insensitively by name using streams.
+  - `Set<Item> searchItemByNameWithFor(String name)`  
+    ➔ Alternative search method using a classic `for-each` loop.
+  - `void displayAllItems()`  
+    ➔ Prints all current items.
 
-public class ItemTracker {
-    private Set<Item> items;
+---
 
-    public ItemTracker() {
-        this.items = new HashSet<>();
-    }
+### 3. `Main` Class
+- Create a `Main` class to simulate the functionality.
+- Steps:
+  - Add several items manually.
+  - Try adding a duplicate item and display the result.
+  - Search for items by name and display results.
+  - Remove an item by ID and display confirmation.
+  - Display all remaining items.
 
-    // Methods for addItem, removeItem, searchItem
-}
+---
 
-public class Main {
-    public static void main(String[] args) {
-        // Setup and run the item tracker
-    }
-}
+## 📈 Advanced (Optional Enhancements)
+- Implement console interaction (scanner input) with a simple menu: add, remove, search, display, exit.
+- Support multiple attributes (e.g., price, category) in the `Item` class.
+- Implement error handling (e.g., invalid input, non-existing ID).
+
+---
+
+## ✅ Evaluation Criteria
+- Correct usage of `Set` to enforce uniqueness.
+- Proper implementation of `equals()` and `hashCode()`.
+- Clear separation of responsibilities across classes.
+- Code readability and structure (clean, consistent, well-named methods).
+- Proper handling of duplicate additions and safe removal of items.
+
+---
+
+## 📦 Example Project Structure
+
+```text
+collection/
+ └── set/
+      ├── task01/
+      │    ├── Item.java
+      │    ├── ItemTracker.java
+      │    └── Main.java
 ```
 
-#### Evaluation Criteria:
-- Correct implementation of the `Set` to ensure uniqueness of items.
-- Effective use of object-oriented principles in Java.
-- Functionality for adding, removing, and searching items.
-- Code quality, including readability, structure, and error handling.
+---
+
+# 💬 Example Flow of Execution
+
+```
+Item added: Book
+Item added: Laptop
+Item added: Phone
+Duplicate item ID detected: TV (ID = 2)
+
+All Items:
+Item{id='1', name='Book'}
+Item{id='2', name='Laptop'}
+Item{id='3', name='Phone'}
+
+Searching for 'Laptop':
+Item{id='2', name='Laptop'}
+
+Removing item with ID '1': Successful
+
+All Items after removal:
+Item{id='2', name='Laptop'}
+Item{id='3', name='Phone'}
+```
+
+---
+
+# 🧠 Important Concepts Practiced
+- Java Collections (`Set`, `HashSet`)
+- Overriding `equals()` and `hashCode()`
+- Iteration with `Iterator` and Stream API
+- Object-Oriented Design (Classes, Encapsulation)
+- Basic console interaction and testing
+
+---
