@@ -1,30 +1,86 @@
-### Task: Implement a Document Printing System using a Queue in Java
 
-#### Scenario
-You are tasked with creating a basic document printing system for a small office. The office has a single printer, and multiple users send print jobs to this printer. To manage these print jobs efficiently and ensure they are printed in the order they were received, you decide to use a queue.
 
-#### Task Description
-1. **Create a Print Job Class**: Define a class `PrintJob` with at least two attributes: a unique `jobId` (e.g., an integer or a string) and a `documentName` (string). Feel free to add more attributes relevant to a print job.
+# 📋 Task: Implement a Document Printing System Using a Queue in Java
 
-2. **Implement the Print Queue**:
-   - Use any appropriate `Queue` implementation from Java Collections Framework to create a print queue.
-   - Ensure the queue holds `PrintJob` objects.
+## 🎯 Objective
+Develop a **simple document printing system** that manages and processes print jobs in the **order they are received** (FIFO — First-In, First-Out), using a **Queue** from Java Collections Framework.
 
-3. **Simulate Adding Jobs to the Queue**:
-   - Create a method to add print jobs to the queue. Each job should have a unique ID and a document name.
-   - Simulate adding multiple print jobs to the queue.
+---
 
-4. **Process the Print Queue**:
-   - Implement a method to process the print jobs in the queue.
-   - When processing a job, simply print out details of the job being printed and then remove it from the queue.
-   - If the queue is empty, display a message indicating that all print jobs have been completed.
+## 🛠 Task Details
 
-5. **Handle Exceptions and Edge Cases**:
-   - Ensure your program gracefully handles scenarios such as trying to process a job when the queue is empty.
+### 1. Create the `PrintJob` Class
+- Define a class called `PrintJob` with the following attributes:
+  - `jobId` (int) — a **unique** auto-incremented ID for each print job.
+  - `documentName` (String) — the name of the document to be printed.
+- Implement:
+  - A constructor that automatically assigns a new unique `jobId` when a new `PrintJob` is created.
+  - `getters` for both fields.
+  - `toString()` method to display job details nicely.
 
-#### Additional Challenges (Optional)
-- Implement functionality to prioritize certain print jobs over others.
-- Add a feature to track and display the number of print jobs completed in a day.
-- Extend the system to support multiple printers, each with its own print queue.
+---
 
-This task involves concepts such as object-oriented programming, queues, and basic system simulation. It provides a practical scenario to apply Java's queue data structures in a real-world application.
+### 2. Create the `PrintQueue` Class
+- Define a class called `PrintQueue` that internally uses a `Queue<PrintJob>` (for example, a `LinkedList`).
+- Implement the following methods:
+  - `void addJob(PrintJob job)` — Adds a new print job to the queue.
+  - `void processJobs()` — Processes (prints) all jobs in the queue, one by one:
+    - For each job, print its details to the console.
+    - After all jobs are processed, display a final message ("All print jobs have been completed.").
+  - Handle the case where there are no jobs to process gracefully (without throwing errors).
+
+---
+
+### 3. Create the `Main` Class
+- Simulate the system:
+  - Create an instance of `PrintQueue`.
+  - Add several `PrintJob` objects to the queue.
+  - Process all print jobs by calling `processJobs()`.
+
+---
+
+## 📈 Optional (Advanced Enhancements)
+- Add a short delay (`Thread.sleep`) between printing each job to simulate real-world printing.
+- Implement a priority system where certain jobs (like "urgent" documents) are processed before others.
+- Track the number of jobs printed during the session.
+- Support multiple printers (each printer having its own queue).
+
+---
+
+## ✅ Requirements
+- Use a **Queue** to maintain the order of print jobs.
+- Ensure that **each job** has a **unique ID** and a **document name**.
+- Ensure **all jobs are processed in the order they were added** (FIFO behavior).
+- Code must be clean, readable, and follow good object-oriented principles.
+
+---
+
+# 📦 Example Project Structure
+
+```text
+collection/
+ └── set/
+      └── task02/
+          ├── Main.java
+          ├── PrintJob.java
+          └── PrintQueue.java
+```
+
+---
+
+# 💬 Expected Output Example
+
+```
+Printing: PrintJob{jobId=1, documentName='Document1.pdf'}
+Printing: PrintJob{jobId=2, documentName='Document2.pdf'}
+Printing: PrintJob{jobId=3, documentName='Document3.pdf'}
+All print jobs have been completed.
+```
+
+---
+
+# 🧠 Concepts Practiced
+- Java Collections Framework (`Queue`)
+- Object-Oriented Programming (Classes, Objects, Encapsulation)
+- FIFO (First-In, First-Out) behavior simulation
+- Basic system simulation (real-world analogy)
